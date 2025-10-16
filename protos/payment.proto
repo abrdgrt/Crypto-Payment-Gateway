@@ -1,0 +1,38 @@
+
+syntax = "proto3";
+
+package payment;
+
+service PaymentService {
+rpc InitiatePayment (PaymentRequest) returns (PaymentResponse) {}
+rpc GetPaymentStatus (StatusRequest) returns (StatusResponse) {}
+}
+
+message PaymentRequest {
+string currency = 1;
+string amount = 2;
+string recipient = 3;
+}
+
+message PaymentResponse {
+bool success = 1;
+string paymentId = 2;
+}
+
+message StatusRequest {
+string paymentId = 1;
+}
+
+message StatusResponse {
+bool success = 1;
+Payment payment = 2;
+}
+
+message Payment {
+string paymentId = 1;
+string status = 2;
+string currency = 3;
+string amount = 4;
+string recipient = 5;
+string transactionHash = 6;
+}

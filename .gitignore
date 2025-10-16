@@ -1,0 +1,5 @@
+.env
+combined.log
+error.log
+payments.db
+node_modules
